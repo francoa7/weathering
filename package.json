@@ -1,0 +1,33 @@
+{
+  "name": "weather-app",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^1.8.8",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
+    "@fontsource/alef": "^4.5.7",
+    "@fontsource/baloo-paaji-2": "^4.5.8",
+    "@fontsource/commissioner": "^4.5.7",
+    "@fontsource/cooper-hewitt": "^4.5.3",
+    "@fontsource/heebo": "^4.5.10",
+    "@reduxjs/toolkit": "^1.8.1",
+    "axios": "^0.27.1",
+    "framer-motion": "^6.3.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-redux": "^8.0.1",
+    "redux-thunk": "^2.4.1"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.0",
+    "@types/react-dom": "^18.0.0",
+    "@vitejs/plugin-react": "^1.3.0",
+    "vite": "^2.9.5"
+  }
+}
