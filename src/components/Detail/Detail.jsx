@@ -7,16 +7,16 @@ import Preassure from './Cards/Pressure'
 
 function Detail({ weather }) {
       return (
-            <Stack id="statsContainer" >
+            <Stack id="statsContainer" width="80%" alignSelf="center" >
                   {weather.main
                         ? <>
                               <Stack
                                     alignSelf="center"
                                     alignItems="center"
                                     justifyContent="center"
-                                    rowGap="3rem"
+                                    rowGap="2rem"
                                     columnGap="3rem"
-                                    width="60%"
+                                    width="100%"
                                     height="fit-content"
                                     flexWrap="wrap"
                                     flexDirection="row">

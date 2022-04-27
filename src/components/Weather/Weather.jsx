@@ -3,7 +3,7 @@ import { Stack, Text } from '@chakra-ui/react'
 import Overview from '../Overview/Overview'
 import Detail from '../Detail/Detail'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCoordsWeather } from '../../redux/actions'
+import { getCurrentWeather } from '../../redux/actions'
 import Day from '../NextDays/Day'
 import NextDays from '../NextDays/NextDays'
 
@@ -11,12 +11,12 @@ function Weather({ position }) {
       const weather = useSelector(state => state.currentWeather)
       const dispatch = useDispatch()
       useEffect(() => {
-            position.latitude && dispatch(getCoordsWeather(position))
+            position.latitude && dispatch(getCurrentWeather(position))
       }, [])
       return (
             <>
                   <Stack
-                        flexGrow="0.2"
+                        flexGrow="0.5"
                         height="100vh"
                         bg="brand.ocBl"
                         color="brand.stBl"
@@ -24,12 +24,12 @@ function Weather({ position }) {
                   >
                         {weather.main
                               ?
-                              <Overview weather={weather} />
+                              <Overview />
                               :
                               <Text>Loading</Text>
                         }
                   </Stack>
-                  <Stack flexGrow="0.8" marginTop="0 !important" id="HOLA" height="100vh" bg="brand.dOcBl" color="brand.stBl" justifyContent="space-evenly">
+                  <Stack flexGrow="0.5" marginTop="0 !important" id="HOLA" height="100vh" bg="brand.dOcBl" color="brand.stBl" justifyContent="space-evenly">
                         {weather.main
                               ?
                               <>

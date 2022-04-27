@@ -1,12 +1,23 @@
-import React, { useEffect } from 'react'
-import { Image, Stack, Text } from '@chakra-ui/react'
-import { useDispatch, useSelector } from 'react-redux'
-import { getCoordsWeather } from '../../redux/actions';
+import React from 'react'
+import { Button, FormControl, IconButton, Image, Input, Stack, Text } from '@chakra-ui/react'
 import sunny from '../../public/assets/sunny.svg'
+import { useDispatch, useSelector } from 'react-redux'
+import { GoLocation } from 'react-icons/go'
+import { getCurrentWeather, getNextDaysWeather } from '../../redux/actions'
 
-function Overview({ weather }) {
+function Overview() {
+      const weather = useSelector(state => state.currentWeather)
+      const dispatch = useDispatch()
 
       const date = new Date(weather.dt * 1000);
+      function getCityWeather(e) {
+            e.preventDefault()
+            const cityInput = document.getElementById("city");
+            dispatch(getCurrentWeather(cityInput.value));
+            dispatch(getNextDaysWeather(cityInput.value))
+            cityInput.value = ""
+      }
+
       return (
             <Stack
                   height="100%"
@@ -17,6 +28,33 @@ function Overview({ weather }) {
                   {weather.main
                         ?
                         <>
+                              <Stack width="100%"
+                                    alignItems="center">
+                                    <form onSubmit={(e) => getCityWeather(e)}>
+                                          <FormControl
+                                                pl="1rem"
+                                                flexDirection="row"
+                                                width="100%"
+                                                alignSelf="center"
+                                          >
+                                                <Input
+                                                      autoComplete='off'
+                                                      id="city"
+                                                      width="75%"
+                                                      placeholder='City'
+                                                />
+
+                                                <Button
+                                                      _hover={{ bg: "transparent" }}
+                                                      bg="transparent"
+                                                      type="submit"
+                                                      width="25%"
+                                                      leftIcon={<GoLocation />} >
+                                                </Button>
+
+                                          </FormControl>
+                                    </form>
+                              </Stack>
                               <Text fontSize="2rem"
                                     textAlign="center"
                               >

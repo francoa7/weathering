@@ -5,7 +5,8 @@ function WindDetail({ weather }) {
       return (
             <Stack
                   justifyContent="center"
-                  minH="120px"
+                  borderRadius="10px"
+                  minH="135px"
                   m="0 !important"
                   width="40%"
                   bg="brand.ocBl"

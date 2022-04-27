@@ -5,14 +5,15 @@ function Pressure({ weather }) {
       (weather);
       return (
             <Stack
+                  borderRadius="10px"
                   justifyContent="center"
-                  minH="120px"
+                  minH="135px"
                   m="0 !important"
                   width="40%"
                   bg="brand.ocBl"
                   alignItems="center"
                   padding="1rem 2rem">
-                  <Text>Air Pressure</Text>
+                  <Text fontSize="1.5rem" fontWeight={900}>Air Pressure</Text>
                   <Text>{weather.main.pressure}</Text>
             </Stack>
       )

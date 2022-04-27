@@ -18,25 +18,31 @@ export function getCurrentPosition() {
       }
 }
 
-export function getCoordsWeather(coords) {
+export function getCurrentWeather(params) {
       return function (dispatch) {
+            let url = "";
+            if (typeof params === "string") {
+                  url = `https://api.openweathermap.org/data/2.5/weather?q=${params}&appid=204a511ed58f5c5b3fdd3383f309b3e1&units=metric`
+            } else url = `https://api.openweathermap.org/data/2.5/weather?lat=${params.latitude}&lon=${params.longitude}&appid=204a511ed58f5c5b3fdd3383f309b3e1&units=metric`
 
-            return axios.get(
-                  `https://api.openweathermap.org/data/2.5/weather?lat=${coords.latitude}&lon=${coords.longitude}&appid=204a511ed58f5c5b3fdd3383f309b3e1&units=metric`
-            ).then((response) => {
-                  dispatch({
-                        type: GET_COORDS_WEATHER,
-                        payload: response.data
+            return axios.get(url)
+                  .then((response) => {
+                        dispatch({
+                              type: GET_COORDS_WEATHER,
+                              payload: response.data
+                        })
                   })
-            })
                   .catch((err) => (err))
       }
 }
 
-export function getNextDaysWeather(position) {
+export function getNextDaysWeather(params) {
       return function (dispatch) {
-
-            return axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${position.latitude}&lon=${position.longitude}&appid=204a511ed58f5c5b3fdd3383f309b3e1&units=metric`)
+            let url = "";
+            if (typeof params === "string") {
+                  url = `https://api.openweathermap.org/data/2.5/forecast?q=${params}&appid=204a511ed58f5c5b3fdd3383f309b3e1&units=metric`
+            } else url = `https://api.openweathermap.org/data/2.5/forecast?lat=${params.latitude}&lon=${params.longitude}&appid=204a511ed58f5c5b3fdd3383f309b3e1&units=metric`;
+            return axios.get(url)
                   .then(response => {
                         dispatch({
                               type: GET_NDAY_WEATHER,

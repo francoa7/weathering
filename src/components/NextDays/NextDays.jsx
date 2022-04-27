@@ -45,10 +45,12 @@ function NextDays({ currentWeather, position }) {
             }
       }
       return (
-            <Stack flexDirection="row" columnGap="2rem" justifyContent="center">
+            <Stack width="80%" alignSelf="center">
+                  <Text width="100%" alignSelf="center" fontWeight={900}>Next Days...</Text>
+                  <Stack flexDirection="row" columnGap="2rem" justifyContent="center">
+                        {nextDaysWeather.list ? elements : <Text>Loading</Text>}
 
-                  {nextDaysWeather.list ? elements : <Text>Loading</Text>}
-
+                  </Stack>
             </Stack>
       )
 }
