@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Stack } from '@chakra-ui/react'
+import { Stack, Text } from '@chakra-ui/react'
 import Overview from '../Overview/Overview'
 import Detail from '../Detail/Detail'
 import { useDispatch, useSelector } from 'react-redux'
@@ -20,13 +20,19 @@ function Weather({ position }) {
                         color="brand.stBl"
                         alignItems="center"
                   >
-                        {weather.main &&
+                        {weather.main
+                              ?
                               <Overview weather={weather} />
+                              :
+                              <Text>Loading</Text>
                         }
                   </Stack>
                   <Stack flexGrow="0.85" marginTop="0 !important" id="HOLA" height="100vh" bg="brand.dOcBl" color="brand.stBl">
-                        {weather.main &&
+                        {weather.main
+                              ?
                               <Detail weather={weather} />
+                              :
+                              <Text>Loading</Text>
                         }
                   </Stack>
             </>
