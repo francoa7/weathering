@@ -4,6 +4,8 @@ import Overview from '../Overview/Overview'
 import Detail from '../Detail/Detail'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCoordsWeather } from '../../redux/actions'
+import Day from '../NextDays/Day'
+import NextDays from '../NextDays/NextDays'
 
 function Weather({ position }) {
       const weather = useSelector(state => state.currentWeather)
@@ -14,7 +16,7 @@ function Weather({ position }) {
       return (
             <>
                   <Stack
-                        flexGrow="0.15"
+                        flexGrow="0.2"
                         height="100vh"
                         bg="brand.ocBl"
                         color="brand.stBl"
@@ -27,10 +29,14 @@ function Weather({ position }) {
                               <Text>Loading</Text>
                         }
                   </Stack>
-                  <Stack flexGrow="0.85" marginTop="0 !important" id="HOLA" height="100vh" bg="brand.dOcBl" color="brand.stBl">
+                  <Stack flexGrow="0.8" marginTop="0 !important" id="HOLA" height="100vh" bg="brand.dOcBl" color="brand.stBl" justifyContent="space-evenly">
                         {weather.main
                               ?
-                              <Detail weather={weather} />
+                              <>
+                                    <NextDays currentWeather={weather} position={position} />
+                                    <Detail weather={weather} />
+
+                              </>
                               :
                               <Text>Loading</Text>
                         }

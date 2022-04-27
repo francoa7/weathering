@@ -14,7 +14,7 @@ function App() {
             dispatch(getCurrentPosition());
       }, [])
       return (
-            <Stack flexDirection="row" alignItems="flex-start" height="100vh" fontFamily="heebo">
+            <Stack flexDirection="row" alignItems="flex-start" height="100vh" fontFamily="commissioner">
                   {position.latitude
                         ?
                         <Weather position={position} />

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { Image, Stack, Text } from '@chakra-ui/react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCoordsWeather } from '../../redux/actions';
+import sunny from '../../public/assets/sunny.svg'
 
 function Overview({ weather }) {
 
@@ -21,7 +22,13 @@ function Overview({ weather }) {
                               >
                                     {`${weather.main.temp.toFixed(1)}°C`}
                               </Text>
-                              <Image src={`http://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`} mt="0 !important" />
+                              <Image src={
+                                    weather.weather[0].icon === "01d"
+                                          ?
+                                          sunny
+                                          :
+                                          `http://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`
+                              } mt="0 !important" p="1rem" />
                               <Text
                                     textAlign="center"
                               >

@@ -1,8 +1,9 @@
-import { GET_COORDS_WEATHER, GET_CURRENT_POSITION } from "../actions/action-types";
+import { GET_COORDS_WEATHER, GET_CURRENT_POSITION, GET_NDAY_WEATHER } from "../actions/action-types";
 
 const initialState = {
       currentPosition: {},
-      currentWeather: {}
+      currentWeather: {},
+      nextDaysWeather: {}
 };
 
 export default function reducer(state = initialState, { type, payload }) {
@@ -16,6 +17,13 @@ export default function reducer(state = initialState, { type, payload }) {
                   return {
                         ...state,
                         currentWeather: payload
+                  }
+
+            case GET_NDAY_WEATHER:
+
+                  return {
+                        ...state,
+                        nextDaysWeather: payload
                   }
             default:
                   return state;
