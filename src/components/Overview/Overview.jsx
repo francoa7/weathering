@@ -3,10 +3,12 @@ import { Button, FormControl, IconButton, Image, Input, Stack, Text } from '@cha
 import sunny from '../../public/assets/sunny.svg'
 import { useDispatch, useSelector } from 'react-redux'
 import { GoLocation } from 'react-icons/go'
-import { getCurrentWeather, getNextDaysWeather } from '../../redux/actions'
+import { IoMdLocate } from 'react-icons/io'
+import { getCurrentPosition, getCurrentWeather, getNextDaysWeather } from '../../redux/actions'
 
 function Overview() {
       const weather = useSelector(state => state.currentWeather)
+      const position = useSelector(state => state.currentPosition)
       const dispatch = useDispatch()
 
       const date = new Date(weather.dt * 1000);
@@ -18,17 +20,23 @@ function Overview() {
             cityInput.value = ""
       }
 
+      function locate() {
+            dispatch(getCurrentPosition())
+            dispatch(getCurrentWeather(position))
+      }
+
       return (
             <Stack
                   height="100%"
                   justifyContent="center"
-                  rowGap="2rem"
+                  rowGap=".5rem"
             >
 
                   {weather.main
                         ?
                         <>
                               <Stack width="100%"
+                                    pt="1rem"
                                     alignItems="center">
                                     <form onSubmit={(e) => getCityWeather(e)}>
                                           <FormControl
@@ -77,6 +85,24 @@ function Overview() {
                               >
                                     Today - {`${date.toLocaleString("en-US", { weekday: "long", day: "numeric", month: "long", hour: "numeric", minute: "numeric" })}`}
                               </Text>
+                              <Stack flexDirection="row"
+                                    justifyContent="center"
+                                    alignItems="center"
+                                    pb="2rem"
+                              >
+                                    <Text>
+                                          {weather.name}
+                                    </Text>
+                                    <IconButton
+                                          size="lg"
+                                          pb="5px"
+                                          bg="transparent"
+                                          _hover={{ bg: "transparent" }}
+                                          icon={<IoMdLocate />}
+                                          onClick={() => locate()}
+
+                                    />
+                              </Stack>
                         </>
                         :
                         <Text>Loading</Text>
