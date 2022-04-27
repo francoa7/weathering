@@ -13,8 +13,8 @@ function WindDetail({ weather }) {
                   alignItems="center"
                   padding="1rem 2rem">
                   <Text fontSize="1.5rem" fontWeight={900}>Wind status</Text>
-                  <Text>{weather.wind.speed}</Text>
-                  <Text>{weather.wind.deg}</Text>
+                  <Text>{weather.wind.speed} m/s</Text>
+                  <Text>{weather.wind.deg}°</Text>
             </Stack>
       )
 }

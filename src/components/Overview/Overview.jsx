@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button, FormControl, IconButton, Image, Input, Stack, Text } from '@chakra-ui/react'
 import sunny from '../../public/assets/sunny.svg'
+import moon from '../../public/assets/moon.png'
 import { useDispatch, useSelector } from 'react-redux'
 import { GoLocation } from 'react-icons/go'
 import { IoMdLocate } from 'react-icons/io'
@@ -73,7 +74,10 @@ function Overview() {
                                           ?
                                           sunny
                                           :
-                                          `http://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`
+                                          weather.weather[0].icon === "01n"
+                                                ?
+                                                moon :
+                                                `http://openweathermap.org/img/wn/${weather.weather[0].icon}@4x.png`
                               } mt="0 !important" p="1rem" />
                               <Text
                                     textAlign="center"
@@ -95,12 +99,11 @@ function Overview() {
                                     </Text>
                                     <IconButton
                                           size="lg"
-                                          pb="5px"
                                           bg="transparent"
                                           _hover={{ bg: "transparent" }}
                                           icon={<IoMdLocate />}
                                           onClick={() => locate()}
-
+                                          _focus={{ outline: "none" }}
                                     />
                               </Stack>
                         </>

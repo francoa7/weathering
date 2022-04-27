@@ -14,7 +14,7 @@ function Pressure({ weather }) {
                   alignItems="center"
                   padding="1rem 2rem">
                   <Text fontSize="1.5rem" fontWeight={900}>Air Pressure</Text>
-                  <Text>{weather.main.pressure}</Text>
+                  <Text>{weather.main.pressure} hPa</Text>
             </Stack>
       )
 }

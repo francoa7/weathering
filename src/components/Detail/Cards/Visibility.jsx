@@ -13,7 +13,7 @@ function Visibility({ weather }) {
                   alignItems="center"
                   padding="1rem 2rem">
                   <Text fontSize="1.5rem" fontWeight={900}>Visibility</Text>
-                  <Text>{`${(weather.visibility / 1000)}km`}</Text>
+                  <Text>{`${(weather.visibility / 1000)} km`}</Text>
             </Stack>)
 }
 
