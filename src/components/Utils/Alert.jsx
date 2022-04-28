@@ -19,7 +19,7 @@ export default function Alert() {
             <>
                   <Modal onClose={onClose} isOpen={isOpen} isCentered position="fixed">
                         <ModalOverlay />
-                        <ModalContent>
+                        <ModalContent width={{ base: "90%", md: "50%" }}>
                               <ModalHeader>Location permission</ModalHeader>
                               <ModalBody>
                                     <Text >Please <b>enable location permissions</b> in your browser in order to access weather features at your current location. Otherwise, you can continue searching for the climate of the cities by name. <b>If you already did it, just refresh the page.</b></Text>
