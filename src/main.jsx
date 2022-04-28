@@ -27,14 +27,27 @@ const colors = {
 
 }
 
+// 2. Update the breakpoints as key-value pairs
+const breakpoints = {
+      sm: '320px',
+      md: '768px',
+      lg: '960px',
+      xl: '1200px',
+      '2xl': '1536px',
+}
+
+// 3. Extend the theme
 const theme = extendTheme({
-      colors, fonts: {
+      colors,
+      fonts: {
             alef: "Alef, sans-serif",
             baloo: "Baloo Paaji 2, sans-serif",
             commissioner: "Commissioner, sans-serif",
             cooper: "Cooper Hewitt, sans-serif",
             heebo: "Heebo, sans-serif"
-      }
+      },
+      breakpoints,
+
 })
 
 const root = createRoot(document.getElementById("root"));

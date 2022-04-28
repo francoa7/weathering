@@ -1,4 +1,4 @@
-import { Stack, Text } from '@chakra-ui/react'
+import { Stack, CircularProgress } from '@chakra-ui/react'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import './App.css'
@@ -14,12 +14,26 @@ function App() {
             dispatch(getCurrentPosition());
       }, [])
       return (
-            <Stack flexDirection="row" alignItems="flex-start" height="100vh" fontFamily="commissioner">
+            <Stack
+                  flexDirection={{ base: "column", lg: "row" }}
+                  alignItems="flex-start"
+                  height="100vh"
+                  fontFamily="commissioner"
+                  id="App">
                   {position.latitude
                         ?
                         <Weather position={position} />
                         :
-                        <Text>Loading</Text>
+                        <Stack
+                              height="100vh"
+                              width="100vw"
+                              bg="brand.dOcBl"
+                              color="brand.stBl"
+                              alignItems="center"
+                              justifyContent="center"
+                        >
+                              <CircularProgress size='80px' isIndeterminate />
+                        </Stack>
                   }
             </Stack>
       )

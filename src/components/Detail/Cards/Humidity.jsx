@@ -7,14 +7,18 @@ function Humidity({ weather }) {
             <Stack
                   justifyContent="center"
                   borderRadius="10px"
-                  minH="135px"
+                  minH={{ sm: "170px", md: "135px" }}
                   m="0 !important"
                   width="40%"
                   bg="brand.ocBl"
                   padding="1rem 2rem">
                   <Stack width="100%"
                         alignItems="center">
-                        <Text fontSize="1.5rem" fontWeight={900}>Humidity</Text>
+                        <Text
+                              textAlign="center"
+                              fontSize="1.5rem"
+                              fontWeight={900}
+                        >Humidity</Text>
                         <Text>{weather.main.humidity}%</Text>
                   </Stack>
                   <Progress value={weather.main.humidity} colorScheme="red" borderRadius="20px" />

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Stack, Text } from '@chakra-ui/react'
+import { Stack, Text, CircularProgress } from '@chakra-ui/react'
 import Day from './Day'
 import { useDispatch, useSelector } from 'react-redux'
 import { getNextDaysWeather } from '../../redux/actions'
@@ -46,9 +46,28 @@ function NextDays({ currentWeather, position }) {
       }
       return (
             <Stack width="80%" alignSelf="center">
-                  <Text width="100%" alignSelf="center" fontWeight={900}>Next Days...</Text>
-                  <Stack flexDirection="row" columnGap="2rem" justifyContent="center">
-                        {nextDaysWeather.list ? elements : <Text>Loading</Text>}
+                  <Text
+                        width={{ base: "90%", md: "100%" }}
+                        alignSelf="center"
+                        fontWeight={900}
+                  >Next Days...</Text>
+                  <Stack
+                        id='daysCards'
+                        flexDirection="row"
+                        columnGap="2rem"
+                        justifyContent="center"
+                        flexWrap={{ base: "wrap", md: "nowrap" }}
+                        rowGap={{ base: "2rem" }}
+
+                  >
+                        {
+                              nextDaysWeather.list
+                                    ?
+                                    elements
+                                    :
+                                    <CircularProgress size='60px' isIndeterminate />
+
+                        }
 
                   </Stack>
             </Stack>
