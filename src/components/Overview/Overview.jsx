@@ -1,13 +1,25 @@
 import React from 'react'
-import { Button, FormControl, IconButton, Image, Input, CircularProgress, Stack, Text } from '@chakra-ui/react'
+import {
+      Button, FormControl, IconButton, Image, Input, CircularProgress, Stack, Text, Modal,
+      ModalOverlay,
+      ModalContent,
+      ModalHeader,
+      ModalFooter,
+      ModalBody,
+      ModalCloseButton,
+      useDisclosure,
+} from '@chakra-ui/react'
 import sunny from '../../public/assets/sunny.svg'
 import moon from '../../public/assets/moon.png'
 import { useDispatch, useSelector } from 'react-redux'
 import { GoLocation } from 'react-icons/go'
 import { IoMdLocate } from 'react-icons/io'
 import { getCurrentPosition, getCurrentWeather, getNextDaysWeather } from '../../redux/actions'
+import Alert from '../Utils/Alert'
 
 function Overview() {
+      const { isOpen, onOpen, onClose } = useDisclosure()
+
       const weather = useSelector(state => state.currentWeather)
       const position = useSelector(state => state.currentPosition)
       const dispatch = useDispatch()
@@ -112,10 +124,27 @@ function Overview() {
                                           bg="transparent"
                                           _hover={{ bg: "transparent" }}
                                           icon={<IoMdLocate />}
-                                          onClick={() => locate()}
+                                          onClick={() => {
+                                                console.log(position);
+                                                if (position === "Mendoza") {
+                                                      onOpen()
+                                                } else return locate()
+                                          }}
                                           _focus={{ outline: "none" }}
                                     />
                               </Stack>
+                              <Modal onClose={onClose} isOpen={isOpen} isCentered position="fixed">
+                                    <ModalOverlay />
+                                    <ModalContent>
+                                          <ModalHeader>Location permission</ModalHeader>
+                                          <ModalBody>
+                                                <Text >Please <b>enable location permissions</b> in your browser in order to access weather features at your current location. Otherwise, you can continue searching for the climate of the cities by name. <b>If you already did it, just refresh the page.</b></Text>
+                                          </ModalBody>
+                                          <ModalFooter>
+                                                <Button onClick={onClose} colorScheme="blue">Close</Button>
+                                          </ModalFooter>
+                                    </ModalContent>
+                              </Modal>
                         </>
                         :
                         <CircularProgress size='80px' isIndeterminate />

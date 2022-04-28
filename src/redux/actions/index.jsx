@@ -16,9 +16,12 @@ export function getCurrentPosition() {
                         type: GET_CURRENT_POSITION,
                         payload: coords
                   })
-            }, (err) => {
-                  alert(err.message)
-                  console.log(err)
+            }, () => {
+                  // alert("Please enable location permissions to access your current climate")
+                  dispatch({
+                        type: GET_CURRENT_POSITION,
+                        payload: "Mendoza"
+                  })
             });
 
       }

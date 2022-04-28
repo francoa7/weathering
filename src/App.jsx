@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './App.css'
 import Weather from './components/Weather/Weather';
 import { getCurrentPosition } from './redux/actions';
+import Alert from './components/Utils/Alert';
 
 function App() {
 
@@ -20,9 +21,17 @@ function App() {
                   height="100vh"
                   fontFamily="commissioner"
                   id="App">
-                  {position.latitude
+                  {position.latitude || position === "Mendoza"
                         ?
-                        <Weather position={position} />
+                        position === "Mendoza"
+                              ?
+                              <>
+                                    <Weather position={position} />
+                                    <Alert />
+                              </>
+                              :
+                              <Weather position={position} />
+
                         :
                         // <Weather position="unauthorized" />
                         <Stack
