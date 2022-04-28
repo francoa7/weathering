@@ -22,8 +22,9 @@ function Weather({ position }) {
 
                               <>
                                     <Stack
+                                          pb={{ base: "2rem", lg: "1rem" }}
                                           flexGrow={{ lg: "0.2" }}
-                                          height="100vh"
+                                          height={{ base: "fit-content", lg: "100vh" }}
                                           bg="brand.ocBl"
                                           color="brand.stBl"
                                           alignItems="center"
