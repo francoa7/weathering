@@ -24,6 +24,7 @@ function Overview() {
       function locate() {
             dispatch(getCurrentPosition())
             dispatch(getCurrentWeather(position))
+            dispatch(getNextDaysWeather(position))
       }
 
       return (

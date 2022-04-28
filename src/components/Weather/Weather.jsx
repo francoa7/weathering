@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react'
-import { Stack, Text, Progress, CircularProgress } from '@chakra-ui/react'
+import { Stack, CircularProgress } from '@chakra-ui/react'
 import Overview from '../Overview/Overview'
 import Detail from '../Detail/Detail'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCurrentWeather } from '../../redux/actions'
-import Day from '../NextDays/Day'
 import NextDays from '../NextDays/NextDays'
 
 function Weather({ position }) {
       const weather = useSelector(state => state.currentWeather)
       const dispatch = useDispatch()
       useEffect(() => {
-            position.latitude && dispatch(getCurrentWeather(position))
+            if (position === "unauthorized") dispatch(getCurrentWeather("Mendoza"))
+            else position.latitude && dispatch(getCurrentWeather(position))
       }, [])
       return (
             <>

@@ -24,6 +24,7 @@ function App() {
                         ?
                         <Weather position={position} />
                         :
+                        // <Weather position="unauthorized" />
                         <Stack
                               height="100vh"
                               width="100vw"
