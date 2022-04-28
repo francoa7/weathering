@@ -7,16 +7,15 @@ function Pressure({ weather }) {
             <Stack
                   borderRadius="10px"
                   justifyContent="center"
-                  minH={{ sm: "170px", md: "135px" }}
+                  minH={{ base: "150px", md: "135px" }}
                   m="0 !important"
                   width="40%"
                   bg="brand.ocBl"
                   alignItems="center"
-                  padding="1rem 2rem">
+                  padding={{ base: ".5rem", md: "1rem 2rem" }}>
                   <Text
                         textAlign="center"
-                        fontSize="1.5rem"
-                        fontWeight={900}
+                        fontSize={{ base: "1rem", md: "1.5rem" }} fontWeight={900}
                   >Air Pressure</Text>
                   <Text>{weather.main.pressure} hPa</Text>
             </Stack>

@@ -6,16 +6,15 @@ function Visibility({ weather }) {
             <Stack
                   justifyContent="center"
                   borderRadius="10px"
-                  minH={{ sm: "170px", md: "135px" }}
+                  minH={{ base: "150px", md: "135px" }}
                   m="0 !important"
                   width="40%"
                   bg="brand.ocBl"
                   alignItems="center"
-                  padding="1rem 2rem">
+                  padding={{ base: ".5rem", md: "1rem 2rem" }}>
                   <Text
                         textAlign="center"
-                        fontSize="1.5rem"
-                        fontWeight={900}
+                        fontSize={{ base: "1rem", md: "1.5rem" }} fontWeight={900}
                   >Visibility</Text>
                   <Text>{`${(weather.visibility / 1000)} km`}</Text>
             </Stack>)

@@ -45,7 +45,7 @@ function NextDays({ currentWeather, position }) {
             }
       }
       return (
-            <Stack width="80%" alignSelf="center">
+            <Stack width={{ base: "100%", md: "80%" }} alignSelf="center">
                   <Text
                         width={{ base: "90%", md: "100%" }}
                         alignSelf="center"
@@ -54,7 +54,7 @@ function NextDays({ currentWeather, position }) {
                   <Stack
                         id='daysCards'
                         flexDirection="row"
-                        columnGap="2rem"
+                        columnGap={{ base: "1rem", md: "2rem" }}
                         justifyContent="center"
                         flexWrap={{ base: "wrap", md: "nowrap" }}
                         rowGap={{ base: "2rem" }}

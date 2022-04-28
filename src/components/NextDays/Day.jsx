@@ -17,7 +17,12 @@ function Day({ currentWeather, day }) {
       let icon = currentWeather[0].weather[0].icon.slice(0, -1).concat("", "d");
       console.log(icon);
       return (
-            <Stack bg="brand.ocBl" mt="0 !important" alignItems="center" p=".2rem 1rem" borderRadius="10px">
+            <Stack
+                  bg="brand.ocBl"
+                  mt="0 !important"
+                  alignItems="center"
+                  p={{ base: ".2rem .3rem", md: ".2rem 1rem" }}
+                  borderRadius="10px">
                   <Text>{day}</Text>
                   <Image src={
                         icon === "01d"
