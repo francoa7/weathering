@@ -10,7 +10,7 @@ function Weather({ position }) {
       const weather = useSelector(state => state.currentWeather)
       const dispatch = useDispatch()
       useEffect(() => {
-            if (position === "unauthorized") dispatch(getCurrentWeather("Mendoza"))
+            if (typeof position === "string") dispatch(getCurrentWeather(position))
             else position.latitude && dispatch(getCurrentWeather(position))
       }, [])
       return (

@@ -11,12 +11,12 @@ export default function reducer(state = initialState, { type, payload }) {
             case GET_CURRENT_POSITION:
                   return {
                         ...state,
-                        currentPosition: payload,
+                        currentPosition: payload.latitude ? payload : "Mendoza",
                   }
             case GET_COORDS_WEATHER:
                   return {
                         ...state,
-                        currentWeather: payload
+                        currentWeather: payload,
                   }
 
             case GET_NDAY_WEATHER:

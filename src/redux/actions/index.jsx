@@ -6,15 +6,21 @@ export function getCurrentPosition() {
             const geo = navigator.geolocation;
 
             return geo.getCurrentPosition((position) => {
+                  console.log(position);
                   const coords = {
                         latitude: position.coords.latitude,
                         longitude: position.coords.longitude
                   }
+
                   dispatch({
                         type: GET_CURRENT_POSITION,
                         payload: coords
                   })
-            }, (err) => (err));
+            }, (err) => {
+                  alert(err.message)
+                  console.log(err)
+            });
+
       }
 }
 
